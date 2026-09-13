@@ -1,0 +1,44 @@
+{
+  "n_train": 5881,
+  "n_test": 6536,
+  "features": [
+    "qt_alunos_avaliados",
+    "qtd_fam_pobreza",
+    "qtd_fam_baixa_renda",
+    "qtd_fam_renda_zero",
+    "taxa_atualizacao_geral_pct",
+    "taxa_atualizacao_ate_meio_sm_pct",
+    "qtd_escolas",
+    "pct_urbana",
+    "ds_rede_municipal",
+    "nome_regiao_nordeste",
+    "nome_regiao_norte",
+    "nome_regiao_sudeste",
+    "nome_regiao_sul",
+    "uf_freq"
+  ],
+  "ridge": {
+    "cv": {
+      "cv_rmse": 0.1851163011082872,
+      "cv_mae": 0.14641536511511682,
+      "cv_r2": 0.17190462828405353
+    },
+    "test": {
+      "rmse": 0.19119959121159022,
+      "mae": 0.15417432263944097,
+      "r2": 0.019665038410231483
+    }
+  },
+  "hist_gradient_boosting": {
+    "cv": {
+      "cv_rmse": 0.1562320307239496,
+      "cv_mae": 0.11977948925175226,
+      "cv_r2": 0.40972240352595407
+    },
+    "test": {
+      "rmse": 0.16591948609329096,
+      "mae": 0.12896086094273973,
+      "r2": 0.26176376136745627
+    }
+  }
+}
