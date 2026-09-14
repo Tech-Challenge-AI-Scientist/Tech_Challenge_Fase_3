@@ -1,4 +1,4 @@
-"""Alvo, exclusões de leakage e split temporal do features.csv."""
+"""Alvo, exclusões e split temporal do features.csv."""
 
 from pathlib import Path
 
@@ -11,12 +11,9 @@ TARGET = "pc_indicador_alfabetizacao"
 YEAR_COL = "ano_2024"
 DEFAULT_META = 0.60
 
-# Leakage (mesmo exame que o alvo), constante e colinearidade.
-# ds_rede_municipal e ds_rede_privada ficam em X: Estadual é a referência (ambos 0).
+# Alvo, constante e colinearidade.
 DROP_ALWAYS = [
     TARGET,
-    "vl_proficiencia_media",
-    "vl_proficiencia_mediana",
     "nu_serie",
     "pct_rural",
     "qtd_fam_ate_meio_sm",
@@ -30,7 +27,7 @@ def load_features(path: Path | str | None = None) -> pd.DataFrame:
 
 
 def feature_columns(df: pd.DataFrame, *, drop_year: bool) -> list[str]:
-    """Lista de colunas de X, sem alvo nem leakage."""
+    """Lista de colunas de X, sem alvo nem as exclusões de DROP_ALWAYS."""
     drop = set(DROP_ALWAYS)
     if drop_year:
         drop.add(YEAR_COL)

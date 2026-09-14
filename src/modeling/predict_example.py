@@ -40,6 +40,8 @@ def exemplo_recorte_novo() -> None:
     novo = pd.DataFrame(
         [
             {
+                "vl_proficiencia_media": 740.0,
+                "vl_proficiencia_mediana": 745.0,
                 "qt_alunos_avaliados": 120,
                 "qtd_fam_pobreza": 1800,
                 "qtd_fam_baixa_renda": 500,
