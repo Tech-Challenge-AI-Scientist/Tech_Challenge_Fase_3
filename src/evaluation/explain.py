@@ -34,6 +34,7 @@ def plot_shap_summary(explanation, path: Path | str | None = None):
     import matplotlib.pyplot as plt
     import shap
 
+    plt.figure()
     shap.plots.beeswarm(explanation, show=False)
     fig = plt.gcf()
     if path is not None:

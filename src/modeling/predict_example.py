@@ -49,6 +49,7 @@ def exemplo_recorte_novo() -> None:
                 "qtd_escolas": 18,
                 "pct_urbana": 0.65,
                 "ds_rede_municipal": 1,
+                "ds_rede_privada": 0,
                 "nome_regiao_nordeste": 0,
                 "nome_regiao_norte": 0,
                 "nome_regiao_sudeste": 1,
