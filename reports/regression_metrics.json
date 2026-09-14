@@ -11,6 +11,7 @@
     "qtd_escolas",
     "pct_urbana",
     "ds_rede_municipal",
+    "ds_rede_privada",
     "nome_regiao_nordeste",
     "nome_regiao_norte",
     "nome_regiao_sudeste",
@@ -19,14 +20,14 @@
   ],
   "ridge": {
     "cv": {
-      "cv_rmse": 0.1851163011082872,
+      "cv_rmse": 0.18511630110828722,
       "cv_mae": 0.14641536511511682,
-      "cv_r2": 0.17190462828405353
+      "cv_r2": 0.1719046282840535
     },
     "test": {
       "rmse": 0.19119959121159022,
       "mae": 0.15417432263944097,
-      "r2": 0.019665038410231483
+      "r2": 0.019665038410231372
     }
   },
   "hist_gradient_boosting": {

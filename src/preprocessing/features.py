@@ -11,13 +11,13 @@ TARGET = "pc_indicador_alfabetizacao"
 YEAR_COL = "ano_2024"
 DEFAULT_META = 0.60
 
-# Mesmo exame que o alvo, constantes, colinearidade ou variação nula.
+# Leakage (mesmo exame que o alvo), constante e colinearidade.
+# ds_rede_municipal e ds_rede_privada ficam em X: Estadual é a referência (ambos 0).
 DROP_ALWAYS = [
     TARGET,
     "vl_proficiencia_media",
     "vl_proficiencia_mediana",
     "nu_serie",
-    "ds_rede_privada",
     "pct_rural",
     "qtd_fam_ate_meio_sm",
 ]
