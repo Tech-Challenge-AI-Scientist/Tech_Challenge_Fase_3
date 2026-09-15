@@ -189,3 +189,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Chave BQ
+bqamo-350115-9744f47e7ee1.json
