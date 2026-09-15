@@ -1,11 +1,11 @@
 import os
 import pandas as pd
 from google.cloud import bigquery
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def extrair_censo_escolar_alfabetizacao():
-    caminho_json = "tech-challenge-2-498401-57b424362f56.json"
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = caminho_json
-    
     print("Autenticando no Google BigQuery...")
     client = bigquery.Client()
     
