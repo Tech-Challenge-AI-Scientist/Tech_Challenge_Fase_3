@@ -50,7 +50,9 @@ def temporal_holdout(
     A coluna de ano sai de X para o modelo não saber qual recorte é holdout.
     """
     if YEAR_COL not in df.columns:
-        raise KeyError(f"Coluna {YEAR_COL} ausente; não é possível fazer holdout temporal.")
+        raise KeyError(
+            f"Coluna {YEAR_COL} ausente; não é possível fazer holdout temporal."
+        )
 
     train_df = df.loc[df[YEAR_COL] == 0].copy()
     test_df = df.loc[df[YEAR_COL] == 1].copy()

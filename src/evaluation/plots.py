@@ -7,6 +7,7 @@ import numpy as np
 
 
 def plot_pred_vs_actual(y_true, y_pred, path: Path | str | None = None):
+    """Gráfico de dispersão do predito vs real."""
     y_true = np.asarray(y_true)
     y_pred = np.asarray(y_pred)
     fig, ax = plt.subplots(figsize=(6, 6))
@@ -24,6 +25,7 @@ def plot_pred_vs_actual(y_true, y_pred, path: Path | str | None = None):
 
 
 def plot_residuals(y_true, y_pred, path: Path | str | None = None):
+    """Histograma dos resíduos (observado − previsto)."""
     residuals = np.asarray(y_true) - np.asarray(y_pred)
     fig, ax = plt.subplots(figsize=(7, 4))
     ax.hist(residuals, bins=30, color="#55A868", edgecolor="black")

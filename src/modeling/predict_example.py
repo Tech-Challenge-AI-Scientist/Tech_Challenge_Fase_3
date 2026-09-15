@@ -11,7 +11,11 @@ import pandas as pd
 
 from src.evaluation.ranking import rank_risk
 from src.modeling.persist import load_pipeline
-from src.preprocessing.features import DEFAULT_META, load_features, temporal_holdout
+from src.preprocessing.features import (
+    DEFAULT_META,
+    load_features,
+    temporal_holdout,
+)
 
 
 def exemplo_holdout() -> None:
@@ -22,15 +26,23 @@ def exemplo_holdout() -> None:
 
     print("=== Exemplo 1 — holdout 2024 ===")
     print(f"recortes no teste: {len(X_test)}")
-    print("primeiras 5 taxas previstas:", [round(float(v), 4) for v in taxa_prevista[:5]])
-    print("primeiras 5 taxas observadas:", [round(float(v), 4) for v in y_test.iloc[:5]])
+    print(
+        "primeiras 5 taxas previstas:",
+        [round(float(v), 4) for v in taxa_prevista[:5]],
+    )
+    print(
+        "primeiras 5 taxas observadas:",
+        [round(float(v), 4) for v in y_test.iloc[:5]],
+    )
 
-    ranking = rank_risk(X_test, taxa_prevista, y_true=y_test, meta=DEFAULT_META, top_n=5)
+    ranking = rank_risk(
+        X_test, taxa_prevista, y_true=y_test, meta=DEFAULT_META, top_n=5
+    )
     print("\n5 recortes com maior risco (meta 60% - taxa prevista):")
     print(
-        ranking[["taxa_prevista", "taxa_observada", "meta_referencia", "risco"]].to_string(
-            index=False
-        )
+        ranking[
+            ["taxa_prevista", "taxa_observada", "meta_referencia", "risco"]
+        ].to_string(index=False)
     )
 
 
@@ -73,6 +85,7 @@ def exemplo_recorte_novo() -> None:
 
 
 def main() -> None:
+    """Executa os exemplos de uso do regressor."""
     exemplo_holdout()
     exemplo_recorte_novo()
 

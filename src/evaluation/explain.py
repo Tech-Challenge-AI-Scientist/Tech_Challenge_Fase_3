@@ -1,3 +1,5 @@
+"""Funções para explicar modelos de regressão."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -31,6 +33,7 @@ def shap_values(
 
 
 def plot_shap_summary(explanation, path: Path | str | None = None):
+    """Plota o summary plot do SHAP."""
     import matplotlib.pyplot as plt
     import shap
 
@@ -44,6 +47,7 @@ def plot_shap_summary(explanation, path: Path | str | None = None):
 
 
 def mean_abs_shap(explanation) -> pd.Series:
+    """Importância média pelo módulo dos valores SHAP."""
     values = np.abs(explanation.values).mean(axis=0)
     names = explanation.feature_names
     return pd.Series(values, index=names).sort_values(ascending=False)
@@ -55,7 +59,9 @@ def coefficient_importance(model, feature_names: list[str]) -> pd.Series:
     if coef is None and hasattr(model, "named_steps"):
         coef = getattr(model.named_steps.get("regressor"), "coef_", None)
     if coef is None:
-        raise AttributeError("Modelo sem coeficientes para importância linear.")
-    return pd.Series(np.abs(np.asarray(coef)).ravel(), index=feature_names).sort_values(
-        ascending=False
-    )
+        raise AttributeError(
+            "Modelo sem coeficientes para importância linear."
+        )
+    return pd.Series(
+        np.abs(np.asarray(coef)).ravel(), index=feature_names
+    ).sort_values(ascending=False)

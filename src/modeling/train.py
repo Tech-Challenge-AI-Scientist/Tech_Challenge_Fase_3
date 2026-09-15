@@ -11,14 +11,21 @@ from sklearn.pipeline import Pipeline
 
 from src.evaluation.metrics import regression_metrics
 from src.modeling.persist import DEFAULT_MODEL_PATH, save_pipeline
-from src.modeling.pipelines import RANDOM_STATE, build_hgb_pipeline, build_ridge_pipeline
+from src.modeling.pipelines import (
+    RANDOM_STATE,
+    build_hgb_pipeline,
+    build_ridge_pipeline,
+)
 from src.preprocessing.features import load_features, temporal_holdout
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 REPORTS_DIR = REPO_ROOT / "reports"
 
 
-def run_cross_validation(model: Pipeline, X, y, n_splits: int = 5) -> dict[str, float]:
+def run_cross_validation(
+    model: Pipeline, X, y, n_splits: int = 5
+) -> dict[str, float]:
+    """Validação cruzada com KFold; retorna métricas médias."""
     cv = KFold(n_splits=n_splits, shuffle=True, random_state=RANDOM_STATE)
     scores = cross_validate(
         model,
@@ -72,13 +79,17 @@ def train_and_evaluate(
 
 
 def persist_reports(summary: dict, path: Path | None = None) -> Path:
+    """Mantém métricas de treino e holdout em JSON."""
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     output = path or (REPORTS_DIR / "regression_metrics.json")
-    output.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
+    output.write_text(
+        json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
     return output
 
 
 def main() -> None:
+    """Treina e avalia o modelo de regressão; persiste o pipeline e métricas."""
     _ridge, hgb, summary = train_and_evaluate()
     model_path = save_pipeline(hgb)
     report_path = persist_reports(summary)
